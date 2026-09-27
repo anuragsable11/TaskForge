@@ -9,6 +9,8 @@ class TaskCreate(BaseModel):
 class TaskResponse(BaseModel):
     id: int
     title: str
+    completed: bool
+    user_id: int
 
     class Config:
         from_attributes = True
@@ -26,3 +28,7 @@ class UserResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+class TaskPatch(BaseModel):
+    title: str | None = None
+    completed: bool | None = None

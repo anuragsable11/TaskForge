@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, ForeignKey, Boolean, DateTime
 from .database import Base
 from sqlalchemy.orm import relationship
 
@@ -10,6 +10,7 @@ class Task(Base):
     title = Column(String, nullable=False)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     user = relationship("User", back_populates="tasks")
+    completed = Column(Boolean, default=False, nullable=False)
 
 class User(Base):
     __tablename__ = "users"
